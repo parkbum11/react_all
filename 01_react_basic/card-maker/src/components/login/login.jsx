@@ -6,12 +6,12 @@ import styles from './login.module.css';
 
 const Login = ({ authService }) => {
   const history = useHistory();
-  const goToMaker = (userId) => {
+  const goToMaker = userId => {
     history.push({
       pathname: '/maker',
       state: { id: userId },
     });
-  }
+  };
 
   const onLogin = event => {
     authService //
@@ -22,8 +22,8 @@ const Login = ({ authService }) => {
   useEffect(() => {
     authService.onAuthChange(user => {
       user && goToMaker(user.id);
-    })
-  })
+    });
+  });
 
   return (
     <section className={styles.login}>
